@@ -225,6 +225,10 @@ class Envira_Gallery_Shortcode_Lite {
                     }
                 }, enviraOnFinished<?php echo $data['id']; ?>);
 
+                var enviraApplyIsotope<?php echo $data['id']; ?> = enviraThrottle(function(){
+                    envira_container_<?php echo $data['id']; ?>.isotope('reLayout');
+                }, 500;
+
                 if ( 0 !== envira_holder_<?php echo $data['id']; ?>.length ) {
                     var envira_mobile = enviraIsMobile(),
                     envira_src_attr   = envira_mobile ? 'data-envira-src-mobile' : 'data-envira-src';
@@ -237,9 +241,8 @@ class Envira_Gallery_Shortcode_Lite {
                         var envira_image = new Image();
                         envira_image.src = envira_src;
                         $(this).attr('src', envira_src).removeAttr(envira_src_attr).css('opacity', '1');
-                        envira_container_<?php echo $data['id']; ?>.isotope('reLayout');
                         envira_image.onload = function(){
-                            envira_container_<?php echo $data['id']; ?>.isotope('reLayout');
+                            enviraApplyIsotope<?php echo $data['id']; ?>();
                         };
 
                         // If loading in the last image, don't throttle the reLayout method - just do it.
