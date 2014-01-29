@@ -257,6 +257,7 @@ class Envira_Gallery_Shortcode_Lite {
                 enviraSetWidths(envira_container_<?php echo $data['id']; ?>, <?php echo absint( $this->get_config( 'gutter', $data ) ); ?>);
 
                 $(window).smartresize(function(){
+                    enviraSetWidths(envira_container_<?php echo $data['id']; ?>, <?php echo absint( $this->get_config( 'gutter', $data ) ); ?>);
                     envira_container_<?php echo $data['id']; ?>.isotope({
                         <?php do_action( 'envira_gallery_api_isotope_config', $data ); ?>
                         transformsEnabled: false,
