@@ -155,9 +155,9 @@ class Envira_Gallery_Shortcode_Lite {
 
                     $imagesrc = $this->get_image_src( $id, $item, $data );
                     $gallery  = apply_filters( 'envira_gallery_output_before_item', $gallery, $id, $item, $data, $i );
-                    $output   = '<div id="envira-gallery-item-' . sanitize_html_class( $id ) . '" class="envira-gallery-item isotope-item" style="margin-bottom: ' . $this->get_config( 'margin', $data ) . 'px;">';
+                    $output   = '<div id="envira-gallery-item-' . sanitize_html_class( $id ) . '" class="envira-gallery-item isotope-item" style="margin-bottom: ' . $this->get_config( 'margin', $data ) . 'px;" ' . apply_filters( 'envira_gallery_output_item_attr', '', $id, $item, $data, $i ) . '>';
                         $output  = apply_filters( 'envira_gallery_output_before_link', $output, $id, $item, $data, $i );
-                        $output .= '<a href="' . esc_url( $item['link'] ) . '" class="envira-gallery-' . sanitize_html_class( $data['id'] ) . ' envira-gallery-link" rel="enviragallery' . sanitize_html_class( $data['id'] ) . '" title="' . esc_attr( $item['title'] ) . '" data-thumbnail="' . esc_url( $item['thumb'] ) . '">';
+                        $output .= '<a href="' . esc_url( $item['link'] ) . '" class="envira-gallery-' . sanitize_html_class( $data['id'] ) . ' envira-gallery-link" rel="enviragallery' . sanitize_html_class( $data['id'] ) . '" title="' . esc_attr( $item['title'] ) . '" data-thumbnail="' . esc_url( $item['thumb'] ) . '" ' . apply_filters( 'envira_gallery_output_link_attr', '', $id, $item, $data, $i ) . '>';
                             $output  = apply_filters( 'envira_gallery_output_before_image', $output, $id, $item, $data, $i );
                             $output .= '<img id="envira-gallery-image-' . sanitize_html_class( $id ) . '" class="envira-gallery-image envira-gallery-preload envira-gallery-image-' . $i . '" src="' . esc_url( plugins_url( 'assets/css/images/holder.gif', dirname( dirname( __FILE__ ) ) ) ) . '" data-envira-src="' . esc_url( $imagesrc ) . '" alt="' . esc_attr( $item['title'] ) . '" ' . apply_filters( 'envira_gallery_output_image_attr', '', $id, $item, $data, $i ) . ' />';
                             $output  = apply_filters( 'envira_gallery_output_after_image', $output, $id, $item, $data, $i );

@@ -55,6 +55,9 @@ Envira Gallery is absolutely, positively the [best responsive WordPress gallery 
 
 == Changelog ==
 
+= 1.0.4 =
+* Add new item and link attributes filter for the gallery output.
+
 = 1.0.3.1 =
 * Flush gallery caches when interacting with meta.
 * Fixed Isotope init on resize.
