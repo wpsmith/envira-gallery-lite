@@ -59,6 +59,7 @@ Envira Gallery is absolutely, positively the [best responsive WordPress gallery 
 * Flush gallery caches when interacting with meta.
 * Fixed Isotope init on resize.
 * Added Isotope config hooks.
+* Added constant ENVIRA_FORCE_ACTIVATION that, when defined, allows you to load Envira on WordPress installs less than 3.8 (no guarantees of everything working properly).
 
 = 1.0.3 =
 * Fixed performance leak with Isotope. Galleries should load much faster now!
