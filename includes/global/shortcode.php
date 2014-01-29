@@ -155,7 +155,7 @@ class Envira_Gallery_Shortcode_Lite {
 
                     $imagesrc = $this->get_image_src( $id, $item, $data );
                     $gallery  = apply_filters( 'envira_gallery_output_before_item', $gallery, $id, $item, $data, $i );
-                    $output   = '<div id="envira-gallery-item-' . sanitize_html_class( $id ) . '" class="envira-gallery-item isotope-item" style="margin-bottom: ' . $this->get_config( 'margin', $data ) . 'px;" ' . apply_filters( 'envira_gallery_output_item_attr', '', $id, $item, $data, $i ) . '>';
+                    $output   = '<div id="envira-gallery-item-' . sanitize_html_class( $id ) . '" class="' . $this->get_gallery_item_classes( $item, $i, $data ) . '" style="margin-bottom: ' . $this->get_config( 'margin', $data ) . 'px;" ' . apply_filters( 'envira_gallery_output_item_attr', '', $id, $item, $data, $i ) . '>';
                         $output  = apply_filters( 'envira_gallery_output_before_link', $output, $id, $item, $data, $i );
                         $output .= '<a href="' . esc_url( $item['link'] ) . '" class="envira-gallery-' . sanitize_html_class( $data['id'] ) . ' envira-gallery-link" rel="enviragallery' . sanitize_html_class( $data['id'] ) . '" title="' . esc_attr( $item['title'] ) . '" data-thumbnail="' . esc_url( $item['thumb'] ) . '" ' . apply_filters( 'envira_gallery_output_link_attr', '', $id, $item, $data, $i ) . '>';
                             $output  = apply_filters( 'envira_gallery_output_before_image', $output, $id, $item, $data, $i );
@@ -323,7 +323,31 @@ class Envira_Gallery_Shortcode_Lite {
         }
 
         // Allow filtering of classes and then return what's left.
-        $classes   = apply_filters( 'envira_gallery_output_classes', $classes, $data );
+        $classes = apply_filters( 'envira_gallery_output_classes', $classes, $data );
+        return trim( implode( ' ', array_map( 'trim', array_map( 'sanitize_html_class', array_unique( $classes ) ) ) ) );
+
+    }
+
+    /**
+     * Helper method for adding custom gallery classes.
+     *
+     * @since 1.0.4
+     *
+     * @param array $item Array of item data.
+     * @param int $i      The current position in the gallery.
+     * @param array $data The gallery data to use for retrieval.
+     * @return string     String of space separated gallery item classes.
+     */
+    public function get_gallery_item_classes( $item, $i, $data ) {
+
+        // Set default class.
+        $classes   = array();
+        $classes[] = 'envira-gallery-item';
+        $classes[] = 'isotope-item';
+        $classes[] = 'envira-gallery-item-' . $i;
+
+        // Allow filtering of classes and then return what's left.
+        $classes = apply_filters( 'envira_gallery_output_item_classes', $classes, $item, $i, $data );
         return trim( implode( ' ', array_map( 'trim', array_map( 'sanitize_html_class', array_unique( $classes ) ) ) ) );
 
     }
