@@ -231,8 +231,7 @@ class Envira_Gallery_Shortcode_Lite {
                 }, envira_throttle_<?php echo $data['id']; ?>);
 
                 if ( 0 !== envira_holder_<?php echo $data['id']; ?>.length ) {
-                    var envira_mobile = enviraIsMobile(),
-                    envira_src_attr   = envira_mobile ? 'data-envira-src-mobile' : 'data-envira-src';
+                    var envira_src_attr = 'data-envira-src';
                     $.each(envira_holder_<?php echo $data['id']; ?>, function(i, el){
                         var envira_src = $(this).attr(envira_src_attr);
                         if ( typeof envira_src === 'undefined' || false === envira_src ) {
