@@ -55,6 +55,10 @@ Envira Gallery is absolutely, positively the [best responsive WordPress gallery 
 
 == Changelog ==
 
+= 1.0.7 =
+* Don’t crop images where the original and destination dimensions match.
+* Ensure to restrain thumbnail views.
+
 = 1.0.6.1 =
 * Ensure post form is available before setting post hash.
 
