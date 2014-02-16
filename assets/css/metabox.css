@@ -250,6 +250,8 @@
     left: 0;
     right: 0;
     bottom: 0;
+    max-width: 150px;
+    max-height: 150px;
 }
 
 #envira-gallery #envira-gallery-output li .envira-gallery-remove-image {
